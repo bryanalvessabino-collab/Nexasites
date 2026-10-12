@@ -1,0 +1,34 @@
+NEXASITES AI — GUIA MAIS FÁCIL PELO CELULAR
+
+IMPORTANTE
+Este pacote prepara o servidor, mas não cria as contas nem as chaves de API por você. Não compartilhe senhas ou chaves no ChatGPT. Peça ajuda a um responsável para contas, idade mínima, custos e pagamentos.
+
+PARTE 1 — SUBIR OS ARQUIVOS AO GITHUB
+1. No celular, abra github.com e entre na sua conta.
+2. Crie um repositório novo chamado nexasites-ai. Se aparecer a opção, deixe-o Private enquanto estiver testando.
+3. Extraia este ZIP no app Arquivos do celular.
+4. Dentro do repositório no GitHub, toque em Add file > Upload files.
+5. Envie os arquivos que estão dentro da pasta extraída, incluindo index.html, server.js, package.json, render.yaml e .env.example. NÃO envie um arquivo .env real nem chaves secretas.
+6. Toque em Commit changes.
+
+PARTE 2 — PUBLICAR UM TESTE NO RENDER
+1. Abra render.com e entre/crie uma conta com ajuda de um responsável se necessário.
+2. Escolha New + > Blueprint.
+3. Conecte o GitHub e selecione o repositório nexasites-ai.
+4. O Render vai ler render.yaml. Confirme a criação do serviço.
+5. Quando pedir as variáveis secretas, pode deixar em branco por enquanto se quiser apenas ver o site. Sem as chaves, geração de sites, busca de leads e PIX não funcionarão.
+6. Aguarde o deploy e abra a URL pública gerada pelo Render.
+
+PARTE 3 — ATIVAR AS FUNÇÕES REAIS
+- OPENAI_API_KEY: chave da API OpenAI para gerar sites.
+- GOOGLE_MAPS_API_KEY: chave com Google Places API habilitada para pesquisar empresas.
+- MERCADOPAGO_ACCESS_TOKEN: token privado de uma conta Mercado Pago elegível para pagamentos.
+- PUBLIC_BASE_URL: URL HTTPS do seu serviço no Render, usada para notificações PIX.
+
+Depois de adicionar ou alterar variáveis no Render, faça um novo deploy/restart conforme o painel indicar.
+
+LIMITES IMPORTANTES
+- O serviço gratuito é para testes. O banco SQLite pode perder dados após reinícios/deploys porque o disco não é persistente no plano gratuito.
+- A busca retorna empresas que não têm site listado na fonte; isso não prova que não tenham site.
+- O app ainda usa um identificador anônimo no navegador, não um sistema de login real. NÃO aceite pagamentos reais nem guarde dados de clientes até implementar autenticação, autorização e armazenamento persistente e fazer revisão de segurança.
+- APIs podem ter cobrança ou limites. Confira os preços e habilitação antes de ativar.

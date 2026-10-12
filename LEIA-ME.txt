@@ -1,0 +1,30 @@
+NEXASITES AI — versão com integrações reais preparadas
+
+REQUISITOS
+- Node.js 20 ou superior
+- Uma chave da API OpenAI para gerar os sites
+- Uma chave da Google Places API (Places API New) para pesquisar empresas
+- Access Token do Mercado Pago para criar e confirmar cobranças PIX
+
+INSTALAÇÃO
+1. Extraia o ZIP numa pasta.
+2. Copie .env.example para .env.
+3. Preencha OPENAI_API_KEY, GOOGLE_MAPS_API_KEY e MERCADOPAGO_ACCESS_TOKEN no .env.
+4. Em produção, configure PUBLIC_BASE_URL com a URL HTTPS pública do servidor.
+5. Abra o terminal nessa pasta e execute: npm install
+6. Execute: npm start
+7. Abra http://localhost:3000 — não abra index.html diretamente pelo gerenciador de arquivos.
+
+O QUE ESTÁ LIGADO
+- Busca de empresas via Google Places; nome, endereço, telefone e site quando listados pela fonte.
+- Geração de site por IA via OpenAI API e armazenamento no SQLite.
+- Lista persistente de projetos e link de visualização.
+- Criação de PIX via Mercado Pago e verificação do status consultando o provedor; webhook também consulta o pagamento no provedor antes de ativar assinatura.
+- A aprovação falsa de comprovantes foi removida.
+
+LIMITAÇÕES IMPORTANTES ANTES DE PUBLICAR
+- O identificador de usuário atual é anônimo e fica no navegador; não é autenticação. Não exponha o app ao público com dados de clientes ou pagamentos antes de implementar login/sessões e autorização real no servidor.
+- A busca identifica empresas sem site listado no Google Places, não prova que a empresa não tenha site.
+- Verifique os custos, limites e habilitação das APIs no Google, OpenAI e Mercado Pago. Nunca coloque segredos em index.html.
+- Configure o webhook público no painel do Mercado Pago e faça pagamentos de teste antes de aceitar cobranças reais.
+- Faça revisão de segurança e privacidade antes de usar em produção.
